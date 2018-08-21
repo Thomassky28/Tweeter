@@ -15,3 +15,13 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Screenshot of tweeter"](https://github.com/Thomassky28/Tweeter/blob/master/docs/Tweet-box%202.png?raw=true)
+!["Screenshot of text-box"](https://github.com/Thomassky28/Tweeter/blob/master/docs/Tweet-box%203.png?raw=true)
+!["Screenshot of tweet-box"](https://github.com/Thomassky28/Tweeter/blob/master/docs/Tweet-box%204.png?raw=true)
+!["Screenshot of toggle effects"](https://github.com/Thomassky28/Tweeter/blob/master/docs/Tweet-box%205.png?raw=true)
+
+
+
