@@ -3,9 +3,6 @@ $(document).ready(function() {
 
 
 
-
-
-
 function getTimeStamp(miliseconds) {
   var days, total_hours, total_minutes, total_seconds;
   let today = new Date().getTime();
@@ -16,7 +13,11 @@ function getTimeStamp(miliseconds) {
   total_hours = parseInt(Math.floor(total_minutes / 60));
   days = parseInt(Math.floor(total_hours / 24));
 
-  return `${days} days ago`;
+  if (days < 0) {
+      return "0 day ago"
+    } else {
+     return `${days} days ago`;
+  }
 }
 
 function createTweetElement(tweet) {
@@ -38,7 +39,7 @@ function createTweetElement(tweet) {
 
   let $div2 = $('<div>').addClass('fas');
   let $icon1 = $('<i>').addClass('fas fa-flag');
-  let $icon2 = $('<i>').addClass('fas fa-sync');
+  let $icon2 = $('<i>').addClass('fas fa-retweet');
   let $icon3 = $('<i>').addClass('fas fa-heart');
 
   $tweet.append($header);
@@ -58,74 +59,42 @@ function createTweetElement(tweet) {
   $div2.append($icon2);
   $div2.append($icon3);
 
-  // ...
   return $tweet;
 }
 
 
 function renderTweets(tweets) {
   for(var i = 0; i < tweets.length; i ++){
-   createTweetElement(tweets[i]);
-   var $tweet = createTweetElement(tweets[i]);
-   $('.tweets').append($tweet);
-
+    createTweetElement(tweets[i]);
+    var $tweet = createTweetElement(tweets[i]);
+    $('.tweets').append($tweet);
   }
- }
-
-
-
-// ---------------------------------------------
-
-// if ( $('.textarea').text === "" ||  $('.textarea').text === null) {
-//   alert("Please write a message!!!");
-//   } else if ( $('.counter').text(length) > 140 ) {
-//       alert("You content is too long");
-//     } else {
-
+}
 
 
 $( "#submit" ).on( "click", function( event ) {
-
   event.preventDefault();
-
   if ( $('textarea').val().length === 0) {
-  // alert("Please write a message!!!");
-       // $( "#E1" ).slideDown();
        $("#E1").slideToggle();
-  } else if ( $('textarea').val().length > 140 ) {
-      // alert("Your content is too long");
-       $("#E2").slideToggle();
-    } else {
-
-
-  var content =  $('textarea').serialize();
-  console.log(content)
-  // $.post("/tweets/", content).done();
-  // $('#form').trigger('reset')
-  //         $("#tweets").empty();
-  //         loadTweets();
-
-  // }
-
-  $.post("/tweets", content , function ( data ) {
-
-    $('#form').trigger('reset')
-    $('.counter').text(140)
-    var $tweet = createTweetElement(data);
-
-   $('.tweets').prepend($tweet);
-
-  })};
-
+     } else if ( $('textarea').val().length > 140 ) {
+         $("#E2").slideToggle();
+     } else {
+      var content =  $('textarea').serialize();
+      $.post("/tweets", content , function ( data ) {
+         $('#form').trigger('reset')
+         $('.counter').text(140)
+         var $tweet = createTweetElement(data);
+         $('.tweets').prepend($tweet);
+      })
+  };
 });
 
-function loadTweets (){
 
+function loadTweets (){
   $.get( "/tweets/", function( data ) {
     renderTweets(data);
   });
 };
-
 loadTweets();
 
 // -----------------------------------------------------------------
@@ -133,23 +102,8 @@ loadTweets();
 $( "#compose" ).click(function() {
   $( ".new-tweet" ).slideToggle( "slow", function() {
     $( "#textarea" ).focus()
-    // Animation complete.
   });
 });
-
-
-// $('#submit').click(function() {
-//     $.ajax({
-//         url: '/tweets',
-//         type: 'POST',
-
-//          success: function() {
-//           $('#form').trigger('reset')
-//           $("#tweets").empty();
-//           loadTweets();
-//         }
-//     });
-// });
 
 /*
  * Client-side JS logic goes here

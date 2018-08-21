@@ -23,9 +23,6 @@ body {
 
 }
 
-
-
-
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
@@ -39,14 +36,6 @@ body {
   margin: 80px auto;
  }
 /*----------------------------------------*/
-/*.tweets {
-    background-color: #eee;
-    border-radius: 5px;
-    /*padding: 10px;*/
-  /*  margin: 1em 1em 1em 1em;
-    text-align: center;
-    border: 1px solid darkgrey;*/
-
 
 .tweet header{
   margin: 0;
@@ -54,8 +43,6 @@ body {
   background-color: #eee;
   border-radius: 5px
 }
-
-
 
 /*----------------------------------*/
 
@@ -67,14 +54,12 @@ body {
   clear: both;
   height: 0;
 }
-
 .profilePic{
   float: left;
   width:  40px;
   height: auto;
   margin:6px;
 }
-
 .userName{
   float: left;
   font-family: 'Roboto Condensed', sans-serif;
@@ -83,27 +68,19 @@ body {
   font-size: 1.4em;
   margin-top: 8px;
 }
-
 .atName{
   float:right;
   margin: 12px;
   margin-top: 12px;
 }
 /*-------------------------------*/
-
 .contents {
   background-color: white;
   height:60px;
 }
 
-
 /*--------------------------------------*/
-*/
-.tweet footer{
-  width: 100%;
-  padding: 2px;
-  background-color: #eee;
-}
+
 .tFooter:after{
   visibility: hidden;
   display: block;
@@ -111,23 +88,21 @@ body {
   content: " ";
   clear: both;
   height: 0;
-
 }
-
 .date p{
   float:left;
   margin-top: 1px;
   margin: 4px;
   font-size:12PX;
 }
-
 .fas{
   padding:1px;
   color:green;
   float:right;
+  opacity:0;
 }
 article.tweet {
-  /*background-color: #eee;*/
+
   border-radius: 5px;
   padding: 0px;
   margin: 1em 1em 1em 1em;
@@ -137,8 +112,10 @@ article.tweet {
 }
 /*
 -------------------------------*/
-
 .tweet:hover {
+  opacity: 1;
+}
+.tweet:hover .fas {
   opacity: 1;
 }
 
