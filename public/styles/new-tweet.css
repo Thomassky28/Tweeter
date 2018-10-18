@@ -35,6 +35,8 @@ section.new-tweet {
 .new-tweet input {
   float: left;
   overflow: auto;
+  margin-left: 2px;
+  margin-bottom: 2px;
 
 }
 

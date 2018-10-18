@@ -73,12 +73,14 @@ function renderTweets(tweets) {
 
 
 $( "#submit" ).on( "click", function( event ) {
-  event.preventDefault();
-  if ( $('textarea').val().length === 0) {
+
+    event.preventDefault();
+    if ( $('textarea').val().length === 0) {
        $("#E1").slideToggle();
-     } else if ( $('textarea').val().length > 140 ) {
+    } else if ( $('textarea').val().length > 140 ) {
          $("#E2").slideToggle();
-     } else {
+    } else {
+
       var content =  $('textarea').serialize();
       $.post("/tweets", content , function ( data ) {
          $('#form').trigger('reset')
@@ -86,7 +88,8 @@ $( "#submit" ).on( "click", function( event ) {
          var $tweet = createTweetElement(data);
          $('.tweets').prepend($tweet);
       })
-  };
+
+    };
 });
 
 
