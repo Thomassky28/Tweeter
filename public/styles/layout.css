@@ -77,6 +77,8 @@ body {
 .contents {
   background-color: white;
   height:60px;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 /*--------------------------------------*/
