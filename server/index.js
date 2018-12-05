@@ -16,7 +16,8 @@ app.use(express.static("public"));
 // const db = require("./lib/in-memory-db");
 
 const MongoClient = require("mongodb").MongoClient;
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGOHQ_URL || process.env.MONGOLAB_URI;
+
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
     console.error(`Failed to connect: ${MONGODB_URI}`);
