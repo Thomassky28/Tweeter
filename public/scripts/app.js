@@ -77,10 +77,14 @@ $( "#submit" ).on( "click", function( event ) {
     event.preventDefault();
     if ( $('textarea').val().length === 0) {
        $("#E1").slideToggle();
+        $("#E2").hide();
+
     } else if ( $('textarea').val().length > 140 ) {
          $("#E2").slideToggle();
+         $("#E1").hide();
     } else {
-
+      $("#E1").hide();
+      $("#E2").hide();
       var content =  $('textarea').serialize();
       $.post("/tweets", content , function ( data ) {
          $('#form').trigger('reset')
